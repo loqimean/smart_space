@@ -1,3 +1,4 @@
+// TODO: move to separate files, like initialize.h in future
 // ************* Vars *************
 #define LIGHT_SENSOR_PIN A0
 #define SERVER_PORT 80
@@ -17,7 +18,7 @@ const char* password = "04101999";
 #include "connection_managers/relays_connection_manager.h"
 
 // Sensors
-#include "sensors/LIGHT_SENSOR.h"
+#include "sensors/light_sensor.h"
 
 // Responders
 #include "responders/light_sensor_responder.h"
