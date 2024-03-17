@@ -1,4 +1,5 @@
 // TODO: move to separate files, like initialize.h in future
+// TODO: create framework for Arduino servers
 // ************* Vars *************
 #define LIGHT_SENSOR_PIN A0
 #define SERVER_PORT 80
