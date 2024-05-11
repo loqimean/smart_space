@@ -1,23 +1,8 @@
 // TODO: move to separate files, like initialize.h in future
 // TODO: create framework for Arduino servers
-// ************* Vars *************
-#define LIGHT_SENSOR_PIN A0
-#define SERVER_PORT 80
 
-#define DHTPIN 17
-#define DHTTYPE DHT11
-
-const int RELAY_PINS[] = {4};
-
-const char* ssid = "TP-Link_E2B1";
-const char* password = "leeco&apple";
-
-// ************ Libs ************
+// Libs
 #include "dependencies.h"
-
-// Connection managers
-#include "connection_managers/wifi_connection_manager.h"
-#include "connection_managers/relays_connection_manager.h"
 
 // Sensors
 #include "sensors/light_sensor.h"
@@ -29,22 +14,25 @@ const char* password = "leeco&apple";
 #include "responders/temp_and_humidity_responder.h"
 
 // Configs
+#include "config/credentials.h"
 #include "config/routes.h"
+
+// Connection managers
+#include "connection_managers/wifi_connection_manager.h"
+#include "connection_managers/relays_connection_manager.h"
 
 WebServer server(SERVER_PORT);
 
 void setup() {
-  Serial.begin(9600); // remove later
+  Serial.begin(9600);
 
   initRelays();
-
-  connectToWiFi(ssid, password);
-
+  connectToWiFi(SSID, PASSWORD);
   setupRoutes(server);
 
   server.begin();
 }
 
 void loop() {
-  server.handleClient(); // Handle client requests
+  server.handleClient();
 }
